@@ -1,0 +1,49 @@
+clear all; clc;
+%r=10*[1:1:5];
+r=30;
+p=100;
+MAX_ITER=1e5;
+TOL = 1e-5;
+tau=0.1;
+theta=[10^(-5):3*10^(-5):2*10^(-4)];
+%theta=0.1;
+n=1.2*10^(4);
+delete(gcp('nocreate'));
+core_number=8;
+parpool('local',core_number);
+repeat_time1=2;
+repeat_time2=8;
+%maxstep=10;
+error_average_r=ones(3,size(r,2));
+for j=1:length(theta)
+    error_D_L4_sum1=0;
+    error_D_ADMM_sum1=0;
+    error_D_SPCA_sum1=0;
+    j=j
+    for time2=1:repeat_time1
+        D=null(randn(p,p-r)');
+        X=random_ini_X(r,n,theta(j));
+        Y=D*X;
+        error_D_L4_sum2=0;
+        error_D_ADMM_sum2=0;
+        error_D_SPCA_sum2=0;
+        parfor k=1:repeat_time2
+            [D_orth_inv_trans]=GD_L4(Y,D);
+            [error_D_L4,~,~]=error3(D_orth_inv_trans,D);
+            [error_D_deflation_admm]=ADMM_deflation(Y,D,MAX_ITER,TOL,tau);
+            [error_D_SPCA]=spca_error(Y,D);
+            error_D_L4_sum2=error_D_L4_sum2+error_D_L4;
+            error_D_ADMM_sum2=error_D_ADMM_sum2+error_D_deflation_admm;
+            error_D_SPCA_sum2=error_D_SPCA_sum2+error_D_SPCA;
+        end
+        error_D_L4_sum1=error_D_L4_sum1+error_D_L4_sum2;
+        error_D_ADMM_sum1=error_D_ADMM_sum1+error_D_ADMM_sum2;
+        error_D_SPCA_sum1=error_D_SPCA_sum1+error_D_SPCA_sum2;
+    end
+    error_average_r(1,j)=error_D_L4_sum1/(repeat_time1*repeat_time2);
+    error_average_r(2,j)=error_D_ADMM_sum1/(repeat_time1*repeat_time2);
+    error_average_r(3,j)=error_D_SPCA_sum1/(repeat_time1*repeat_time2);
+end
+
+save("Final_supplement_result/theta_recover_whole_Admm_L4_spca_2");
+delete(gcp('nocreate'));
