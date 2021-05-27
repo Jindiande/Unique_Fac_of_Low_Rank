@@ -1,0 +1,10 @@
+function [error_D_spca]=spca_error(Y,D)
+[p,n]=size(Y);
+[~,r]=size(D);
+[X_res_tran,~]=spca(Y, [], r, inf, false);
+[U,~,V]=svd(X_res_tran);
+[~,s,~]=svd(X_res_tran'*Y');
+%X_res_tran=U*[s';zeros(n-p,r)]*V';
+%X_res=X_res_tran';
+D_res=Y*U*[diag(ones(r,1)./diag(s));zeros(n-r,r)]*V';
+[error_D_spca,~,~]=error3(D_res,D);
