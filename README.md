@@ -5,6 +5,6 @@ This deposite is the implementation on experiments results of our paper [Unique 
 + Run *general_full_recover_L4_varing_theta.m* to reproduce figure 3.
 + Run *theta_general_full_recover_three_deflation.m* and *r_general_full_recover_three_deflation.m* to get figure 4.
 
-We use some codes from [DL_focm](https://github.com/sunju/dl_focm) and [LARS](https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/submissions/58939/versions/1/previews/spca.m/index.html) to compare our method with ADMM and LARS respectively in solving Sparse-PCA problem.
+We use codes from [DL_focm](https://github.com/sunju/dl_focm) and [LARS](https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/submissions/58939/versions/1/previews/spca.m/index.html) to compare our method with ADMM and LARS respectively in solving Sparse-PCA problem.
 
 Code is written by Dian Jin, Xin Bing and Yuqian Zhang. Contact dj370@scarletmail.rutgers.edu if there exist any problems.
