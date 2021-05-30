@@ -7,4 +7,4 @@ This deposite is the implementation on experiments results of our paper [Unique 
 
 We use codes from [DL_focm](https://github.com/sunju/dl_focm) and [LARS](https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/submissions/58939/versions/1/previews/spca.m/index.html) to compare our method with ADMM and LARS respectively in solving Sparse-PCA problem.
 
-Code is written by Dian Jin, Xin Bing and Yuqian Zhang. Contact dj370@scarletmail.rutgers.edu if there exist any problems.
+Codes are written by Dian Jin, Xin Bing and Yuqian Zhang. Contact dj370@scarletmail.rutgers.edu if there exist any problem.
