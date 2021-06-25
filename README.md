@@ -1,5 +1,5 @@
 # Unique_Fac_of_Low_Rank
-This deposite is the implementation on experiments results of our paper [Unique Sparse Decomposition of Low Rank Matrices]( https://rutgersconnect-my.sharepoint.com/:b:/g/personal/dj370_soe_rutgers_edu/EShimHFuS_dEsgA6PBbtAH4BKR-QTjGLGI_S7pqvvkrJZw?e=fcKzbZ).
+This deposite is the implementation on experiments results of our paper [Unique Sparse Decomposition of Low Rank Matrices]( https://arxiv.org/abs/2106.07736).
 
 + Run *recover_one_vs_n_and_r.m* and *recover_one_vs_theta_and_r.m* to reproduce left and right part of figure 1 respectively.
 + Run *general_full_recover_L4_varing_theta.m* to reproduce figure 3.
